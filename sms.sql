@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.6.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2020 at 07:54 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.9
+-- Generation Time: Nov 30, 2022 at 06:17 AM
+-- Server version: 5.7.14
+-- PHP Version: 5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -37,45 +36,13 @@ CREATE TABLE `addteacher` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `feesubmit`
---
-
-CREATE TABLE `feesubmit` (
-  `id` int(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `monthname` varchar(255) NOT NULL,
-  `annual` int(255) NOT NULL,
-  `monthly` int(255) NOT NULL,
-  `sport` int(255) NOT NULL,
-  `library` int(255) NOT NULL,
-  `Status` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `feesubmit`
---
-
-INSERT INTO `feesubmit` (`id`, `name`, `monthname`, `annual`, `monthly`, `sport`, `library`, `Status`) VALUES
-(77, 'Scalett Brown', 'April', 5000, 3000, 5000, 5000, 'paid'),
-(77, 'Scalett Brown', 'April', 5000, 300, 5000, 5000, 'unpaid'),
-(1042, 'Bilal', 'December', 500, 4500, 5000, 5000, 'unpaid'),
-(1036, 'Jimmy ', 'december', 5000, 1000, 6000, 6000, 'paid'),
-(1042, 'Tayyab', 'Dec', 5000, 3000, 5000, 5000, 'paid');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `reportcard`
 --
 
 CREATE TABLE `reportcard` (
-  `id` int(255) NOT NULL,
+  `idcard` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `class` varchar(255) NOT NULL,
-  `phy` int(255) NOT NULL,
-  `chem` int(255) NOT NULL,
-  `math` int(255) NOT NULL,
-  `rollnumber` varchar(255) NOT NULL,
+  `group` varchar(255) NOT NULL,
   `grade` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -83,15 +50,8 @@ CREATE TABLE `reportcard` (
 -- Dumping data for table `reportcard`
 --
 
-INSERT INTO `reportcard` (`id`, `name`, `class`, `phy`, `chem`, `math`, `rollnumber`, `grade`) VALUES
-(25, 'Riya', '7', 55, 72, 98, '256', 'A'),
-(259, 'Sam', '9', 99, 98, 99, '1024', 'A+'),
-(33, 'Bilal', '10', 40, 22, 39, '1069', 'Fail'),
-(74, 'Zoya', '8', 70, 70, 70, '20658', 'A'),
-(1042, 'John', '10', 80, 100, 90, '99', 'A+'),
-(1042, 'John', '10', 80, 100, 90, '99', 'A+'),
-(25, 'ilal', '8', 89, 75, 85, '1036', 'A+'),
-(1056, 'Silver', '5', 66, 22, 55, '88', 'D');
+INSERT INTO `reportcard` (`idcard`, `name`, `group`, `grade`) VALUES
+(1, 'Kornelija', '565', '8');
 
 -- --------------------------------------------------------
 
@@ -105,10 +65,16 @@ CREATE TABLE `stureg` (
   `fname` varchar(255) NOT NULL,
   `phone` int(255) NOT NULL,
   `fatherphone` int(255) NOT NULL,
-  `class` varchar(255) NOT NULL,
-  `roll` varchar(255) NOT NULL,
+  `group` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `stureg`
+--
+
+INSERT INTO `stureg` (`id`, `name`, `fname`, `phone`, `fatherphone`, `group`, `address`) VALUES
+(1, 'Kornelija', 'jjjiji', 655, 65656, '565', 'jnc');
 
 -- --------------------------------------------------------
 
@@ -128,8 +94,54 @@ CREATE TABLE `user_login` (
 
 INSERT INTO `user_login` (`id`, `username`, `password`) VALUES
 (1, 'admin', 'admin');
-COMMIT;
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `addteacher`
+--
+ALTER TABLE `addteacher`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `reportcard`
+--
+ALTER TABLE `reportcard`
+  ADD PRIMARY KEY (`idcard`);
+
+--
+-- Indexes for table `stureg`
+--
+ALTER TABLE `stureg`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_login`
+--
+ALTER TABLE `user_login`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `addteacher`
+--
+ALTER TABLE `addteacher`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `stureg`
+--
+ALTER TABLE `stureg`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `user_login`
+--
+ALTER TABLE `user_login`
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
